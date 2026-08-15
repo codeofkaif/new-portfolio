@@ -59,18 +59,21 @@ function FloatingOrb({
   className,
   delay = 0,
   floatDuration = 4,
+  glowColor = 'rgba(139,92,246,0.3)',
 }: {
-  symbol: string;
+  symbol: React.ReactNode;
   className?: string;
   delay?: number;
   floatDuration?: number;
+  glowColor?: string;
 }) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.6 }}
       animate={{ opacity: 1, scale: 1, y: [0, -8, 0] }}
       transition={{ duration: floatDuration, repeat: Infinity, ease: 'easeInOut', delay }}
-      className={`absolute w-12 h-12 rounded-full bg-[#1A1A1E]/90 border border-white/10 backdrop-blur-xl shadow-2xl flex items-center justify-center text-[#9CA3AF] font-mono text-xs font-bold ${className ?? ''}`}
+      className={`absolute w-12 h-12 rounded-full bg-[#10151F]/90 border border-white/15 backdrop-blur-xl flex items-center justify-center font-mono text-xs font-bold ${className ?? ''}`}
+      style={{ boxShadow: `0 0 20px ${glowColor}` }}
     >
       {symbol}
     </motion.div>
@@ -81,24 +84,43 @@ function ProfilePhoto() {
   const [imgErr, setImgErr] = useState(false);
 
   return (
-    <div className="relative w-full flex justify-center items-center select-none">
-      {/* Outer circular arc — subtle white */}
+    <div className="relative w-full flex justify-center items-center select-none pt-4">
+      {/* ── Outer rotating cyber HUD ring ── */}
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-        className="absolute w-[380px] h-[380px] md:w-[440px] md:h-[440px] rounded-full border border-dashed border-[#F5C76A]/30"
+        transition={{ duration: 35, repeat: Infinity, ease: 'linear' }}
+        className="absolute w-[420px] h-[420px] md:w-[480px] md:h-[480px] rounded-full border border-dashed border-cyan-500/25 pointer-events-none"
       />
 
-      {/* Glow blob behind photo */}
-      <div className="absolute w-[280px] h-[280px] rounded-full bg-[#F5C76A]/20 blur-[80px] pointer-events-none" />
+      {/* ── Inner counter-rotating ring with glowing accents ── */}
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+        className="absolute w-[360px] h-[360px] md:w-[420px] md:h-[420px] rounded-full border border-indigo-500/30 pointer-events-none"
+        style={{
+          borderTopColor: '#38BDF8',
+          borderRightColor: 'transparent',
+          borderBottomColor: '#818CF8',
+          borderLeftColor: 'transparent',
+        }}
+      />
 
-      {/* Photo — tall portrait, no circle clip */}
-      <div className="relative z-10 w-[260px] md:w-[310px] overflow-hidden rounded-3xl shadow-2xl border border-white/[0.05]">
+      {/* ── Futuristic circular tech grid bloom behind head ── */}
+      <div
+        className="absolute top-4 w-[340px] h-[340px] md:w-[400px] md:h-[400px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(56,189,248,0.22) 0%, rgba(99,102,241,0.15) 40%, rgba(139,92,246,0.08) 60%, transparent 75%)',
+          filter: 'blur(35px)',
+        }}
+      />
+
+      {/* ── Photo Container (Tall portrait with bottom fade) ── */}
+      <div className="relative z-10 w-[280px] md:w-[330px] lg:w-[360px] overflow-hidden rounded-t-[36px] shadow-2xl">
         {!imgErr ? (
           <img
             src={profile.photo}
             alt={profile.name}
-            className="w-full object-cover object-top"
+            className="w-full object-cover object-top filter contrast-[1.03] brightness-[1.02]"
             style={{ aspectRatio: '3/4' }}
             onError={() => setImgErr(true)}
           />
@@ -111,34 +133,56 @@ function ProfilePhoto() {
             <span className="text-[#9CA3AF] text-sm mt-3 font-mono">{profile.name}</span>
           </div>
         )}
-        {/* Bottom fade */}
-        <div className="absolute bottom-0 inset-x-0 h-24 bg-gradient-to-t from-[#07070A] via-[#07070A]/80 to-transparent" />
+
+        {/* Seamless bottom fade into page background */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#05070A] via-[#05070A]/85 to-transparent pointer-events-none" />
       </div>
 
-      {/* Floating code orbs */}
-      <FloatingOrb symbol="</>" className="-top-6 left-4 md:left-0" delay={0} floatDuration={4} />
-      <FloatingOrb symbol="{}" className="top-10 -left-8 md:-left-14" delay={0.6} floatDuration={5} />
-      <FloatingOrb symbol="☁" className="bottom-16 -left-6 md:-left-10 text-lg" delay={0.9} floatDuration={5.5} />
+      {/* ── Floating tech badges matching screenshot ── */}
+      {/* 1. </> Code orb (top left) */}
+      <FloatingOrb
+        symbol={<span className="text-cyan-400 font-extrabold text-sm">&lt;/&gt;</span>}
+        className="-top-4 left-4 md:-left-2 text-cyan-400 border-cyan-500/40"
+        delay={0}
+        floatDuration={4}
+        glowColor="rgba(34,211,238,0.35)"
+      />
 
-      {/* AI Brain orb (top right) */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, scale: 1, y: [0, -10, 0] }}
-        transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 0.4 }}
-        className="absolute top-0 -right-6 md:-right-14 w-14 h-14 rounded-full bg-[#1A1A1E]/90 border border-[#8B5CF6]/40 backdrop-blur-xl shadow-[0_0_20px_rgba(139,92,246,0.3)] flex items-center justify-center"
-      >
-        <span className="text-xl">🧠</span>
-      </motion.div>
+      {/* 2. {} Brackets orb (mid left) */}
+      <FloatingOrb
+        symbol={<span className="text-purple-400 font-extrabold text-base">&#123;&#125;</span>}
+        className="top-14 -left-6 md:-left-12 text-purple-400 border-purple-500/40"
+        delay={0.6}
+        floatDuration={5}
+        glowColor="rgba(168,85,247,0.35)"
+      />
 
-      {/* Database orb */}
-      <motion.div
-        initial={{ opacity: 0, scale: 0.6 }}
-        animate={{ opacity: 1, scale: 1, y: [0, 8, 0] }}
-        transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1.1 }}
-        className="absolute top-1/3 -right-8 md:-right-16 w-12 h-12 rounded-full bg-[#1A1A1E]/90 border border-white/10 backdrop-blur-xl shadow-2xl flex items-center justify-center text-lg"
-      >
-        🗄️
-      </motion.div>
+      {/* 3. ☁ Cloud orb (lower left) */}
+      <FloatingOrb
+        symbol={<span className="text-blue-400 text-lg">☁</span>}
+        className="bottom-20 -left-4 md:-left-8 text-blue-400 border-blue-500/40"
+        delay={0.9}
+        floatDuration={5.5}
+        glowColor="rgba(59,130,246,0.35)"
+      />
+
+      {/* 4. 🧠 AI Brain orb (top right) */}
+      <FloatingOrb
+        symbol={<span className="text-xl">🧠</span>}
+        className="-top-2 -right-4 md:-right-10 border-indigo-500/40 w-14 h-14"
+        delay={0.4}
+        floatDuration={4.5}
+        glowColor="rgba(99,102,241,0.4)"
+      />
+
+      {/* 5. 🗄️ Database orb (mid right) */}
+      <FloatingOrb
+        symbol={<span className="text-lg text-cyan-300">🗄️</span>}
+        className="top-1/3 -right-6 md:-right-14 border-cyan-500/40"
+        delay={1.1}
+        floatDuration={4.8}
+        glowColor="rgba(6,182,212,0.35)"
+      />
     </div>
   );
 }
