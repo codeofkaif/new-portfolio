@@ -123,28 +123,24 @@ function ProfilePhoto() {
         }}
       />
 
-      {/* ── Photo Container (Tall portrait with bottom fade) ── */}
-      <div className="relative z-10 w-[280px] md:w-[330px] lg:w-[360px] overflow-hidden rounded-t-[36px] shadow-2xl">
+      {/* ── Photo Cutout Container (Only occupies photo area, no rectangular box) ── */}
+      <div className="relative z-10 w-[270px] md:w-[320px] lg:w-[350px] flex justify-center items-end">
         {!imgErr ? (
           <img
             src={profile.photo}
             alt={profile.name}
-            className="w-full object-cover object-top filter contrast-[1.03] brightness-[1.02]"
-            style={{ aspectRatio: '3/4' }}
+            className="w-full h-auto object-contain select-none drop-shadow-[0_20px_40px_rgba(0,0,0,0.8)] filter contrast-[1.03] brightness-[1.02]"
             onError={() => setImgErr(true)}
           />
         ) : (
           <div
-            className="w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#1A1A1E] to-[#111113] border border-white/[0.08]"
+            className="w-full flex flex-col items-center justify-center bg-gradient-to-br from-[#141414] to-[#0A0A0A] border border-white/[0.08] rounded-3xl"
             style={{ aspectRatio: '3/4' }}
           >
             <User className="w-24 h-24 text-[#9CA3AF]" />
             <span className="text-[#9CA3AF] text-sm mt-3 font-mono">{profile.name}</span>
           </div>
         )}
-
-        {/* Seamless bottom fade into page background #0A0A0A */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/85 to-transparent pointer-events-none" />
       </div>
 
       {/* ── Floating tech badges matching screenshot ── */}

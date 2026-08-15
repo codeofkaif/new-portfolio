@@ -42,7 +42,7 @@ function Portrait() {
         <img
           src={profile.photo}
           alt={profile.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-top"
           onError={(e) => {
             // Fallback: hide img and show initials
             (e.currentTarget as HTMLImageElement).style.display = 'none';

@@ -24,7 +24,7 @@ export const profile = {
     { label: "Years of Learning", value: 3, suffix: "+", sub: "Years Journey" },
     { label: "Happy Collaborators", value: 19, suffix: "+", sub: "Satisfied Clients" },
   ], // placeholder numbers — replace with real ones later
-  photo: "/profile-photo.jpg",
+  photo: "/profile-photo.png",
   resumeLink: "/resume.pdf",
   socials: {
     github: "https://github.com/codeofkaif",
