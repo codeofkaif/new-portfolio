@@ -114,6 +114,15 @@ function ProfilePhoto() {
         }}
       />
 
+      {/* ── Soft warm-gold radial glow behind photo (#F2B93A at 10% opacity, large blur) ── */}
+      <div
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] md:w-[500px] md:h-[500px] rounded-full pointer-events-none"
+        style={{
+          background: 'radial-gradient(circle, rgba(242,185,58,0.11) 0%, rgba(242,185,58,0.05) 45%, transparent 70%)',
+          filter: 'blur(45px)',
+        }}
+      />
+
       {/* ── Photo Container (Tall portrait with bottom fade) ── */}
       <div className="relative z-10 w-[280px] md:w-[330px] lg:w-[360px] overflow-hidden rounded-t-[36px] shadow-2xl">
         {!imgErr ? (
@@ -134,8 +143,8 @@ function ProfilePhoto() {
           </div>
         )}
 
-        {/* Seamless bottom fade into page background */}
-        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#05070A] via-[#05070A]/85 to-transparent pointer-events-none" />
+        {/* Seamless bottom fade into page background #0A0A0A */}
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/85 to-transparent pointer-events-none" />
       </div>
 
       {/* ── Floating tech badges matching screenshot ── */}
@@ -261,10 +270,10 @@ export function HeroSection() {
         <div
           className="hero-mesh absolute top-0 left-0 w-full h-full opacity-40"
           style={{
-            background: 'radial-gradient(ellipse 60% 50% at 50% 0%, rgba(245,158,11,0.12), transparent)',
+            background: 'radial-gradient(ellipse 70% 55% at 50% 0%, rgba(242,185,58,0.09), transparent)',
           }}
         />
-        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-[#F5C76A]/5 blur-[150px]" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[600px] rounded-full bg-[#F2B93A]/5 blur-[150px]" />
         <HeroParticles />
       </div>
 

@@ -23,7 +23,7 @@ export function ContactSection() {
   return (
     <Section id="contact" className="relative">
       <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#F5C76A]/5 blur-[100px]" />
+        <div className="absolute left-1/2 top-1/3 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-[#F2B93A]/4 blur-[100px]" />
       </div>
 
       <motion.div

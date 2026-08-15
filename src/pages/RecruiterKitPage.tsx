@@ -76,7 +76,7 @@ export default function RecruiterKitPage() {
     <PageWrapper>
       {/* Background glow */}
       <div className="pointer-events-none fixed inset-0 z-0">
-        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-[#8B5CF6]/5 blur-[150px]" />
+        <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[800px] h-[500px] rounded-full bg-[#F2B93A]/4 blur-[150px]" />
       </div>
 
       <Section id="recruiter-kit" spacing="default" className="relative z-10">

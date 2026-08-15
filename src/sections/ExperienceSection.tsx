@@ -107,7 +107,7 @@ export function ExperienceSection() {
               {TIMELINE_ITEMS.map((item) => (
                 <div key={item.id} className="flex flex-col items-center">
                   {/* Timeline Dot */}
-                  <div className="hidden lg:flex w-4 h-4 rounded-full bg-[#F1F1F4] border-[3px] border-[#07070A] shadow-[0_0_12px_#F1F1F4] mb-8" />
+                  <div className="hidden lg:flex w-4 h-4 rounded-full bg-[#F1F1F4] border-[3px] border-[#0A0A0A] shadow-[0_0_12px_#F1F1F4] mb-8" />
                   
                   {/* Card */}
                   <div className="bg-transparent border border-white/[0.07] rounded-2xl p-5 hover:border-white/[0.14] transition-all duration-300 group w-full h-full flex flex-col">

@@ -143,7 +143,7 @@ export function JourneyTimeline() {
                       whileInView={{ scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ type: 'spring', stiffness: 400, damping: 20, delay: 0.1 }}
-                      className="w-4 h-4 rounded-full border-2 border-[#05070A]"
+                      className="w-4 h-4 rounded-full border-2 border-[#0A0A0A]"
                       style={{
                         background: event.color,
                         boxShadow: `0 0 14px 3px ${event.color}60`,

@@ -416,7 +416,7 @@ export function FeaturedProjects() {
                         onClick={prev}
                         disabled={active === 0}
                         className="pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center
-                                   border border-white/[0.12] bg-[#05070A]/80 backdrop-blur-sm
+                                   border border-white/[0.12] bg-[#0A0A0A]/80 backdrop-blur-sm
                                    text-[#9CA3AF] hover:text-[#F1F1F4] hover:border-white/25
                                    disabled:opacity-25 transition-all duration-200"
                       >
@@ -426,7 +426,7 @@ export function FeaturedProjects() {
                         onClick={next}
                         disabled={active === projects.length - 1}
                         className="pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center
-                                   border border-white/[0.12] bg-[#05070A]/80 backdrop-blur-sm
+                                   border border-white/[0.12] bg-[#0A0A0A]/80 backdrop-blur-sm
                                    text-[#9CA3AF] hover:text-[#F1F1F4] hover:border-white/25
                                    disabled:opacity-25 transition-all duration-200"
                       >

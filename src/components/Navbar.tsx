@@ -51,7 +51,7 @@ export function Navbar() {
         className={cn(
           'fixed top-0 inset-x-0 z-50 transition-all duration-300',
           scrolled
-            ? 'bg-[#07070A]/90 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/50'
+            ? 'bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-white/[0.06] shadow-lg shadow-black/50'
             : 'bg-transparent border-b border-transparent'
         )}
       >
@@ -146,7 +146,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-[60px] z-40 bg-[#07070A]/97 backdrop-blur-2xl border-b border-white/[0.07] lg:hidden py-4 px-6 shadow-2xl"
+            className="fixed inset-x-0 top-[60px] z-40 bg-[#0A0A0A]/97 backdrop-blur-2xl border-b border-white/[0.07] lg:hidden py-4 px-6 shadow-2xl"
           >
             <div className="flex flex-col gap-1.5">
               {NAV_ITEMS.map((item) => {

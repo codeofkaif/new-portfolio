@@ -177,7 +177,7 @@ export function TerminalMode() {
       {/* Keyboard hint — bottom right */}
       <div
         className="fixed bottom-4 right-4 z-40 flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg
-                   text-[10px] font-mono text-[#4B5563] border border-white/[0.06] bg-[#05070A]/80
+                   text-[10px] font-mono text-[#4B5563] border border-white/[0.06] bg-[#0A0A0A]/80
                    backdrop-blur-sm select-none pointer-events-none"
       >
         <kbd className="px-1 py-0.5 rounded bg-white/5 text-[9px] font-bold">Ctrl</kbd>
@@ -195,7 +195,7 @@ export function TerminalMode() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
             className="fixed inset-0 z-50 flex flex-col"
-            style={{ background: 'rgba(2,4,8,0.97)', backdropFilter: 'blur(8px)' }}
+            style={{ background: 'rgba(10,10,10,0.98)', backdropFilter: 'blur(8px)' }}
             onClick={() => inputRef.current?.focus()}
           >
             {/* Terminal header */}

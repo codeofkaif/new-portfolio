@@ -162,7 +162,7 @@ export function TechScroller() {
             <div
               className="pointer-events-none absolute inset-y-0 left-0 w-10 z-10 transition-opacity duration-300"
               style={{
-                background: 'linear-gradient(to right, #05070A, transparent)',
+                background: 'linear-gradient(to right, #0A0A0A, transparent)',
                 opacity: canScrollLeft ? 1 : 0,
               }}
             />
@@ -170,7 +170,7 @@ export function TechScroller() {
             <div
               className="pointer-events-none absolute inset-y-0 right-0 w-10 z-10 transition-opacity duration-300"
               style={{
-                background: 'linear-gradient(to left, #05070A, transparent)',
+                background: 'linear-gradient(to left, #0A0A0A, transparent)',
                 opacity: canScrollRight ? 1 : 0,
               }}
             />

@@ -10,17 +10,23 @@
 
   body {
     @apply font-sans antialiased;
-    background-color: #05070A;
+    background-color: #0A0A0A;
     color: #FFFFFF;
+    position: relative;
+    min-height: 100vh;
   }
 
+  /* Global continuous warm-gold ambient wash (3-5% #F2B93A) + subtle micro-grid */
   body::before {
     content: '';
     position: fixed;
     inset: 0;
     background-image:
-      radial-gradient(circle, rgba(255,255,255,0.025) 1px, transparent 1px);
-    background-size: 32px 32px;
+      radial-gradient(ellipse 90% 60% at 50% 0%, rgba(242, 185, 58, 0.045), transparent 75%),
+      radial-gradient(circle at 85% 30%, rgba(242, 185, 58, 0.03), transparent 60%),
+      radial-gradient(circle at 15% 75%, rgba(242, 185, 58, 0.025), transparent 60%),
+      radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 32px 32px;
     pointer-events: none;
     z-index: 0;
   }
@@ -30,19 +36,19 @@
   * { border-color: rgba(255,255,255,0.06); }
 
   ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: #05070A; }
-  ::-webkit-scrollbar-thumb { background: rgba(245,199,106,0.4); border-radius: 9999px; }
-  ::-webkit-scrollbar-thumb:hover { background: rgba(245,199,106,0.7); }
-  ::selection { background-color: rgba(245,199,106,0.25); color: #FFFFFF; }
+  ::-webkit-scrollbar-track { background: #0A0A0A; }
+  ::-webkit-scrollbar-thumb { background: rgba(242,185,58,0.4); border-radius: 9999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(242,185,58,0.7); }
+  ::selection { background-color: rgba(242,185,58,0.25); color: #FFFFFF; }
 }
 
 @layer components {
   /* ── Buttons ── */
   .btn-primary {
     @apply inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-bold text-[13px]
-           text-[#05070A] transition-all duration-200 active:scale-95;
-    background: linear-gradient(135deg, #F5C76A, #EAB308);
-    box-shadow: 0 0 20px rgba(245,199,106,0.35);
+           text-[#0A0A0A] transition-all duration-200 active:scale-95;
+    background: linear-gradient(135deg, #F2B93A, #EAB308);
+    box-shadow: 0 0 20px rgba(242,185,58,0.35);
   }
   .btn-primary:hover {
     opacity: 0.92;
@@ -65,12 +71,12 @@
 
   /* ── Cards ── */
   .card {
-    @apply bg-[#10151F]/60 backdrop-blur-xl border border-white/[0.06] rounded-2xl p-6
+    @apply bg-[#141414]/60 backdrop-blur-xl border border-white/[0.06] rounded-2xl p-6
            hover:border-white/[0.12] transition-all duration-300;
   }
 
   .card-glass {
-    @apply bg-[#10151F]/60 backdrop-blur-xl border border-white/[0.06] rounded-2xl;
+    @apply bg-[#141414]/60 backdrop-blur-xl border border-white/[0.06] rounded-2xl;
   }
 
   /* ── Badges ── */
@@ -86,7 +92,7 @@
 
   /* ── Text gradients ── */
   .gradient-text {
-    background: linear-gradient(to right, #F5C76A, #EAB308);
+    background: linear-gradient(to right, #F2B93A, #EAB308);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -101,24 +107,24 @@
 
   .section-label {
     @apply text-xs font-mono font-semibold tracking-[0.2em] uppercase mb-3;
-    color: #F5C76A;
+    color: #F2B93A;
   }
 
   /* ── Float badge ── */
   .float-badge {
-    @apply absolute bg-[#10151F]/90 backdrop-blur-sm border border-white/[0.06]
+    @apply absolute bg-[#141414]/90 backdrop-blur-sm border border-white/[0.06]
            rounded-2xl shadow-2xl flex items-center justify-center;
   }
 
   /* ── Neon divider ── */
   .neon-line {
     @apply h-px w-full;
-    background: linear-gradient(to right, transparent, rgba(245,199,106,0.4), transparent);
+    background: linear-gradient(to right, transparent, rgba(242,185,58,0.4), transparent);
   }
 
   /* ── Stats card ── */
   .stat-card {
-    @apply bg-[#10151F]/40 border border-white/[0.06] px-5 py-4 flex items-center justify-between gap-3 rounded-2xl
+    @apply bg-[#141414]/40 border border-white/[0.06] px-5 py-4 flex items-center justify-between gap-3 rounded-2xl
            hover:border-white/[0.12] transition-all duration-300;
   }
 
@@ -138,7 +144,7 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
     font-weight: 500;
-    color: rgba(245, 199, 106, 0.12);
+    color: rgba(242, 185, 58, 0.12);
     pointer-events: none;
     user-select: none;
     animation: floatParticle var(--dur, 18s) ease-in-out infinite;
@@ -156,12 +162,11 @@
 
   /* ── Gradient mesh background pulse ── */
   @keyframes meshPulse {
-    0%, 100% { opacity: 0.4; }
-    50%       { opacity: 0.7; }
+    0%, 100% { opacity: 0.35; }
+    50%       { opacity: 0.6; }
   }
 
   .hero-mesh {
     animation: meshPulse 8s ease-in-out infinite;
   }
 }
-
