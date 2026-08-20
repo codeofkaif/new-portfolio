@@ -110,7 +110,7 @@ export function JourneyTimeline() {
           </p>
         </div>
 
-        {/* ── Desktop: alternating two-column. Mobile: single column ── */}
+        {/* ── Desktop: alternating two-column. Mobile: single column centered ── */}
         <div className="relative">
 
           {/* Center spine — desktop only */}
@@ -119,7 +119,7 @@ export function JourneyTimeline() {
             style={{ background: 'linear-gradient(to bottom, transparent, rgba(245,199,106,0.3) 10%, rgba(139,92,246,0.3) 50%, rgba(34,211,238,0.3) 90%, transparent)' }}
           />
 
-          <div className="flex flex-col gap-10 lg:gap-0">
+          <div className="flex flex-col gap-10 lg:gap-0 items-center lg:items-stretch">
             {timeline.map((event, idx) => {
               const side: 'left' | 'right' = idx % 2 === 0 ? 'right' : 'left';
 
@@ -127,7 +127,7 @@ export function JourneyTimeline() {
                 <div
                   key={event.id}
                   className={`
-                    relative lg:grid lg:grid-cols-2 lg:gap-12 items-center
+                    w-full relative lg:grid lg:grid-cols-2 lg:gap-12 items-center
                     ${idx !== 0 ? 'lg:-mt-2' : ''}
                   `}
                 >
@@ -156,8 +156,8 @@ export function JourneyTimeline() {
                     {side === 'right' && <TimelineCard event={event} side="right" />}
                   </div>
 
-                  {/* Mobile: full-width card with left dot */}
-                  <div className="lg:hidden flex items-start gap-4">
+                  {/* Mobile: centered card with dot */}
+                  <div className="lg:hidden w-full max-w-xl mx-auto flex items-start gap-4">
                     {/* Vertical dot + line */}
                     <div className="flex flex-col items-center shrink-0 pt-1">
                       <div
