@@ -22,6 +22,7 @@ export const timeline: TimelineEvent[] = [
     tags: ['C', 'Python', 'Java'],
     color: '#F5C76A',
     icon: '🚀',
+    image: '/timeline/started-programming.jpg',
   },
   {
     id: 'dsa-fundamentals',
@@ -33,6 +34,7 @@ export const timeline: TimelineEvent[] = [
     tags: ['DSA', 'LeetCode', 'OS', 'DBMS'],
     color: '#8B5CF6',
     icon: '🧠',
+    image: '/timeline/dsa-fundamentals.jpg',
   },
   {
     id: 'web-java-projects',
@@ -44,6 +46,7 @@ export const timeline: TimelineEvent[] = [
     tags: ['Java', 'HTML', 'CSS', 'JavaScript', 'MySQL', 'Git'],
     color: '#22D3EE',
     icon: '🌐',
+    image: '/timeline/web-java.jpg',
   },
   {
     id: 'spring-boot-rest',
@@ -55,6 +58,7 @@ export const timeline: TimelineEvent[] = [
     tags: ['Spring Boot', 'Spring Security', 'JWT', 'PostgreSQL', 'Redis'],
     color: '#4ADE80',
     icon: '⚙️',
+    image: '/timeline/spring-boot.jpg',
   },
   {
     id: 'hospital-api',
@@ -66,6 +70,7 @@ export const timeline: TimelineEvent[] = [
     tags: ['Spring Boot', 'JPA', 'Redis', 'Docker', 'PostgreSQL'],
     color: '#F472B6',
     icon: '🏥',
+    image: '/timeline/hospital-api.jpg',
   },
   {
     id: 'gras-ai',
@@ -77,6 +82,7 @@ export const timeline: TimelineEvent[] = [
     tags: ['Python', 'ML', 'Deep Learning', 'NLP', 'AI/LLM'],
     color: '#A78BFA',
     icon: '🤖',
+    image: '/timeline/gras-ai.jpg',
   },
   {
     id: 'adil-constructions',
@@ -88,6 +94,7 @@ export const timeline: TimelineEvent[] = [
     tags: ['React', 'Spring Boot', 'MySQL', 'JWT', 'TypeScript'],
     color: '#FB923C',
     icon: '🏗️',
+    image: '/timeline/adil-constructions.jpg',
   },
   {
     id: 'current',
@@ -100,5 +107,7 @@ export const timeline: TimelineEvent[] = [
     color: '#34D399',
     icon: '🎓',
     current: true,
+    image: '/timeline/btech-internship.jpg',
   },
 ];
+
