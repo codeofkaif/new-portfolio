@@ -2,7 +2,7 @@ import { PageWrapper } from '@/components/PageWrapper';
 import { HeroSection } from '@/sections/HeroSection';
 import { StatsRow } from '@/sections/StatsRow';
 import { FeaturedProjects } from '@/sections/FeaturedProjects';
-import { ExperienceSection } from '@/sections/ExperienceSection';
+import { AchievementsSection } from '@/sections/AchievementsSection';
 import { SkillsSection } from '@/sections/SkillsSection';
 import { TechScroller } from '@/sections/TechScroller';
 import { LearningSection } from '@/sections/LearningSection';
@@ -14,7 +14,7 @@ export default function HomePage() {
       <HeroSection />
       <StatsRow />
       <FeaturedProjects />
-      <ExperienceSection />
+      <AchievementsSection />
       <SkillsSection />
       <TechScroller />
       <LearningSection />
@@ -22,3 +22,4 @@ export default function HomePage() {
     </PageWrapper>
   );
 }
+
