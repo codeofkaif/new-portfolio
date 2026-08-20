@@ -404,20 +404,33 @@ export function FeaturedProjects() {
                   transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
                   className="flex flex-col h-full"
                 >
-                  {/* Mockup thumbnail */}
-                  <div className="relative p-4 pb-0">
-                    <div className="h-52">
-                      <ProjectMockup index={active} />
-                    </div>
+                  {/* Project image thumbnail */}
+                  <div className="relative overflow-hidden rounded-t-2xl" style={{ height: '220px' }}>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                      style={{ filter: 'brightness(0.88) saturate(1.1)' }}
+                    />
+                    {/* Bottom gradient overlay for readability */}
+                    <div
+                      className="absolute inset-0"
+                      style={{ background: 'linear-gradient(to bottom, transparent 40%, rgba(10,12,20,0.85) 100%)' }}
+                    />
+                    {/* Color accent glow on border */}
+                    <div
+                      className="absolute inset-0 rounded-t-2xl pointer-events-none"
+                      style={{ boxShadow: `inset 0 -2px 0 ${statusStyle.text}40` }}
+                    />
 
-                    {/* Arrow buttons over thumbnail */}
-                    <div className="absolute inset-x-4 bottom-2 flex justify-between pointer-events-none">
+                    {/* Arrow buttons over image */}
+                    <div className="absolute inset-x-4 bottom-3 flex justify-between">
                       <button
                         onClick={prev}
                         disabled={active === 0}
-                        className="pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center
-                                   border border-white/[0.12] bg-[#0A0A0A]/80 backdrop-blur-sm
-                                   text-[#9CA3AF] hover:text-[#F1F1F4] hover:border-white/25
+                        className="w-8 h-8 rounded-full flex items-center justify-center
+                                   border border-white/[0.18] bg-[#0A0A0A]/80 backdrop-blur-sm
+                                   text-[#9CA3AF] hover:text-[#F1F1F4] hover:border-white/30
                                    disabled:opacity-25 transition-all duration-200"
                       >
                         <ChevronLeft className="w-4 h-4" />
@@ -425,15 +438,16 @@ export function FeaturedProjects() {
                       <button
                         onClick={next}
                         disabled={active === projects.length - 1}
-                        className="pointer-events-auto w-8 h-8 rounded-full flex items-center justify-center
-                                   border border-white/[0.12] bg-[#0A0A0A]/80 backdrop-blur-sm
-                                   text-[#9CA3AF] hover:text-[#F1F1F4] hover:border-white/25
+                        className="w-8 h-8 rounded-full flex items-center justify-center
+                                   border border-white/[0.18] bg-[#0A0A0A]/80 backdrop-blur-sm
+                                   text-[#9CA3AF] hover:text-[#F1F1F4] hover:border-white/30
                                    disabled:opacity-25 transition-all duration-200"
                       >
                         <ChevronRight className="w-4 h-4" />
                       </button>
                     </div>
                   </div>
+
 
                   {/* Text content */}
                   <div className="flex flex-col gap-4 p-5 flex-1">

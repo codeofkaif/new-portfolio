@@ -20,7 +20,7 @@ export const projects: Project[] = [
   {
     slug: 'adil-constructions',
     title: 'ADIL CONSTRUCTIONS',
-    image: '/projects/adil-constructions.png',
+    image: '/projects/adil-constructions.jpg',
     techStack: ['React', 'Vite', 'TypeScript', 'Spring Boot', 'MySQL', 'JWT', 'JPA'],
     description:
       'Full-stack construction company platform with a public landing page, client dashboard, and an admin panel featuring real-time notifications, project tracking, and role-based access.',
@@ -90,7 +90,7 @@ public class JwtAuthFilter extends OncePerRequestFilter {
   {
     slug: 'hospital-management-api',
     title: 'Hospital Management REST API',
-    image: '/projects/hospital-api.png',
+    image: '/projects/hospital-api.jpg',
     techStack: ['Spring Boot', 'Spring Security', 'JPA', 'Hibernate', 'Redis', 'PostgreSQL', 'Docker'],
     description:
       'Production-grade REST API for managing hospital operations — doctors, patients, appointments, billing — secured with Spring Security 6 and accelerated with Redis caching.',
@@ -152,7 +152,7 @@ public class AppointmentController {
   {
     slug: 'ai-code-security-reviewer',
     title: 'AI Code Security Reviewer',
-    image: '/projects/ai-security-reviewer.png',
+    image: '/projects/ai-security.jpg',
     techStack: ['Spring Boot', 'Python', 'FastAPI', 'Claude API', 'React', 'OWASP'],
     description:
       'AI-powered tool that scans submitted code for OWASP Top 10 vulnerabilities, explains findings in plain English via Claude, and delivers a prioritised security report in the browser.',
