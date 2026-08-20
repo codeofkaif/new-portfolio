@@ -1,24 +1,17 @@
 import { motion } from 'framer-motion';
 import { timeline } from '@/data/timeline';
 import { fadeUpItem } from '@/lib/motionVariants';
+import { ChevronDown } from 'lucide-react';
 
 // ── Single timeline card ──────────────────────────────────────────────────────
-function TimelineCard({ event, side }: {
-  event: typeof timeline[number];
-  side: 'left' | 'right';
-}) {
+function TimelineCard({ event }: { event: typeof timeline[number] }) {
   return (
     <motion.div
       variants={fadeUpItem}
       initial="initial"
       whileInView="animate"
       viewport={{ once: true, margin: '-60px' }}
-      className={`
-        relative flex flex-col gap-3 rounded-2xl p-5 cursor-default
-        transition-all duration-300
-        ${side === 'left' ? 'lg:text-right lg:items-end' : 'lg:text-left lg:items-start'}
-        text-left items-start
-      `}
+      className="relative flex flex-col gap-3 rounded-2xl p-5 cursor-default transition-all duration-300 text-left items-start w-full"
       style={{
         background: 'rgba(16,21,31,0.55)',
         backdropFilter: 'blur(18px)',
@@ -28,12 +21,12 @@ function TimelineCard({ event, side }: {
     >
       {/* Accent top line */}
       <div
-        className={`absolute top-0 h-px rounded-full ${side === 'left' ? 'right-6 left-16' : 'left-6 right-16'}`}
-        style={{ background: `linear-gradient(to ${side === 'left' ? 'left' : 'right'}, transparent, ${event.color}70)` }}
+        className="absolute top-0 left-6 right-6 h-px rounded-full"
+        style={{ background: `linear-gradient(to right, transparent, ${event.color}70, transparent)` }}
       />
 
       {/* Icon chip + year row */}
-      <div className={`flex items-center gap-2.5 ${side === 'left' ? 'lg:flex-row-reverse' : 'flex-row'} flex-row`}>
+      <div className="flex items-center gap-2.5 flex-row">
         <div
           className="w-9 h-9 rounded-full flex items-center justify-center text-base shrink-0"
           style={{
@@ -73,7 +66,7 @@ function TimelineCard({ event, side }: {
       <p className="text-[12px] text-[#9CA3AF] leading-relaxed">{event.description}</p>
 
       {/* Tags */}
-      <div className={`flex flex-wrap gap-1.5 ${side === 'left' ? 'lg:justify-end' : ''}`}>
+      <div className="flex flex-wrap gap-1.5">
         {event.tags.map((tag) => (
           <span
             key={tag}
@@ -92,11 +85,36 @@ function TimelineCard({ event, side }: {
   );
 }
 
+// ── Arrow between cards ───────────────────────────────────────────────────────
+function ArrowDivider({ color }: { color: string }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4 }}
+      className="flex flex-col items-center gap-0 py-1"
+    >
+      {/* Vertical line */}
+      <div
+        className="w-px h-6"
+        style={{ background: `linear-gradient(to bottom, ${color}60, ${color}20)` }}
+      />
+      {/* Chevron arrow */}
+      <ChevronDown
+        className="w-5 h-5 -mt-1"
+        style={{ color: `${color}90` }}
+        strokeWidth={2.5}
+      />
+    </motion.div>
+  );
+}
+
 // ── Main export ───────────────────────────────────────────────────────────────
 export function JourneyTimeline() {
   return (
     <section className="py-16 md:py-24 w-full relative z-10">
-      <div className="max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[680px] mx-auto px-4 sm:px-6">
 
         {/* Section heading */}
         <div className="text-center mb-14">
@@ -110,73 +128,18 @@ export function JourneyTimeline() {
           </p>
         </div>
 
-        {/* ── Desktop: alternating two-column. Mobile: single column centered ── */}
-        <div className="relative">
-
-          {/* Center spine — desktop only */}
-          <div
-            className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px -translate-x-1/2"
-            style={{ background: 'linear-gradient(to bottom, transparent, rgba(245,199,106,0.3) 10%, rgba(139,92,246,0.3) 50%, rgba(34,211,238,0.3) 90%, transparent)' }}
-          />
-
-          <div className="flex flex-col gap-10 lg:gap-0 items-center lg:items-stretch">
-            {timeline.map((event, idx) => {
-              const side: 'left' | 'right' = idx % 2 === 0 ? 'right' : 'left';
-
-              return (
-                <div
-                  key={event.id}
-                  className={`
-                    w-full relative lg:grid lg:grid-cols-2 lg:gap-12 items-center
-                    ${idx !== 0 ? 'lg:-mt-2' : ''}
-                  `}
-                >
-                  {/* Left cell */}
-                  <div className={`hidden lg:block ${side === 'right' ? '' : 'order-2'}`}>
-                    {side === 'left' && <TimelineCard event={event} side="left" />}
-                  </div>
-
-                  {/* Center dot — desktop */}
-                  <div className="hidden lg:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 z-20 flex-col items-center">
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: 'spring', stiffness: 400, damping: 20, delay: 0.1 }}
-                      className="w-4 h-4 rounded-full border-2 border-[#0A0A0A]"
-                      style={{
-                        background: event.color,
-                        boxShadow: `0 0 14px 3px ${event.color}60`,
-                      }}
-                    />
-                  </div>
-
-                  {/* Right cell */}
-                  <div className={`hidden lg:block ${side === 'left' ? '' : 'order-2'}`}>
-                    {side === 'right' && <TimelineCard event={event} side="right" />}
-                  </div>
-
-                  {/* Mobile: centered card with dot */}
-                  <div className="lg:hidden w-full max-w-xl mx-auto flex items-start gap-4">
-                    {/* Vertical dot + line */}
-                    <div className="flex flex-col items-center shrink-0 pt-1">
-                      <div
-                        className="w-3 h-3 rounded-full shrink-0"
-                        style={{ background: event.color, boxShadow: `0 0 8px 2px ${event.color}60` }}
-                      />
-                      {idx < timeline.length - 1 && (
-                        <div className="w-px flex-1 mt-1 min-h-[60px]" style={{ background: `linear-gradient(to bottom, ${event.color}50, transparent)` }} />
-                      )}
-                    </div>
-                    <div className="flex-1 pb-4">
-                      <TimelineCard event={event} side="right" />
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+        {/* ── Centered single-column cards with arrows ── */}
+        <div className="flex flex-col items-center">
+          {timeline.map((event, idx) => (
+            <div key={event.id} className="w-full flex flex-col items-center">
+              <TimelineCard event={event} />
+              {idx < timeline.length - 1 && (
+                <ArrowDivider color={event.color} />
+              )}
+            </div>
+          ))}
         </div>
+
       </div>
     </section>
   );

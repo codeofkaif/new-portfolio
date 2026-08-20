@@ -48,10 +48,7 @@ function Portrait() {
             (e.currentTarget as HTMLImageElement).style.display = 'none';
           }}
         />
-        {/* Initials fallback (visible behind img) */}
-        <span className="absolute text-3xl font-black gradient-text select-none pointer-events-none">
-          {profile.name.split(' ').map((n) => n[0]).slice(0, 2).join('')}
-        </span>
+
       </div>
 
       {/* Status badge */}
