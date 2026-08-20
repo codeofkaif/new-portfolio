@@ -29,7 +29,7 @@ export const profile = {
   socials: {
     github: "https://github.com/codeofkaif",
     linkedin: "https://linkedin.com/in/YOUR_LINKEDIN",
-    email: "your.email@example.com",
+    email: "officialkkaif2687@gmail.com",
   },
   githubUsername: "codeofkaif",
 };
