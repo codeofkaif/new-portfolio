@@ -28,7 +28,7 @@ export const profile = {
   resumeLink: "/resume.pdf",
   socials: {
     github: "https://github.com/codeofkaif",
-    linkedin: "https://linkedin.com/in/YOUR_LINKEDIN",
+    linkedin: "https://www.linkedin.com/in/kaif-khan-26a10029a/",
     email: "officialkkaif2687@gmail.com",
   },
   githubUsername: "codeofkaif",

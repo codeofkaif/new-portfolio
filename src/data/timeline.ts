@@ -8,6 +8,7 @@ export interface TimelineEvent {
   color: string;
   icon: string; // emoji or short label
   current?: boolean;
+  image?: string; // optional image URL or path for the card
 }
 
 export const timeline: TimelineEvent[] = [
